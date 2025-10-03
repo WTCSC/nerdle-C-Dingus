@@ -1,3 +1,4 @@
+import random
 """
 equation_generator.py
 
@@ -15,6 +16,12 @@ For example: 12+34=46 or 8*7=56
 ###########################################
 
 def generate_numbers_for_addition():
+    
+    res = random.randint(20, 99)#0..108
+
+    num1 = random.randint(10, res-10)
+    num2 = res - num1
+    return (num1, num2, res) 
     """
     Generate two numbers that when added create an 8-character equation.
     Returns a tuple of (num1, num2, result)
@@ -26,6 +33,15 @@ def generate_numbers_for_addition():
     """
 
 def generate_numbers_for_subtraction():
+    res = random.randint(-89, 99)#-108..108
+
+    if res >= 0:
+        num1 = random.randint(res+10, 99)
+        num2 = res - num1
+        return (num1, num2, res)
+    num1 = random.randint(0, 99-res)
+    num2 = res + num1
+    return (num1, num2, res)
     """
     Generate two numbers that when subtracted create an 8-character equation.
     Returns a tuple of (num1, num2, result)
@@ -37,6 +53,13 @@ def generate_numbers_for_subtraction():
     """
 
 def generate_numbers_for_multiplication():
+    res = random.randint(10, 99)
+
+    little = random.randint(0, res-9, res)
+    if little == 0:
+        little = 1
+    big = res/little
+    return (little, big, res)
     """
     Generate two numbers that when multiplied create an 8-character equation.
     Returns a tuple of (num1, num2, result)
@@ -49,6 +72,11 @@ def generate_numbers_for_multiplication():
     """
 
 def generate_numbers_for_division():
+    res = random.randint(1, 9)
+
+    little = random.randint(int(99/res) + 1, 99)
+    big = little*res
+    return (big, little, res)
     """
     Generate two numbers that when divided create an 8-character equation.
     Returns a tuple of (num1, num2, result)
