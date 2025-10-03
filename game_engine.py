@@ -16,6 +16,8 @@ import equation_generator
 ###########################################
 
 def is_valid_guess(guess):
+    print(guess)
+    return True
     """
     Check if a player's guess is valid for Nerdle.
     
